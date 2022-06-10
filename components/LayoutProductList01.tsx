@@ -1,7 +1,6 @@
 import { FC } from "react";
-import { IProduct, Item } from "../src/interfaces";
+import { IProduct } from "../src/interfaces";
 import Link from "next/link";
-import { useRouter } from 'next/router';
 
 interface Props {
 	products: IProduct[];

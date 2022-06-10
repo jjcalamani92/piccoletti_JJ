@@ -5,10 +5,10 @@ import {
 	ProductOverviews05
 } from "../../components";
 import { useQuery } from "@apollo/client";
-import { IProduct } from "../../src/interfaces";
+import { IProduct, IWear } from "../../src/interfaces";
 import { PRODUCTS, PRODUCT_BY_SLUG } from "../../src/gql/query";
 import { client } from "../../src/apollo";
-import Heading from "../../components/Heading";
+import Heading01 from "../../components/Heading";
 
 interface SlugPage {
 	slug: string;
@@ -26,9 +26,9 @@ const SlugPage: NextPage<SlugPage> = ({ slug }) => {
 			title={"Choco - Stores"}
 			pageDescription={"Encuentra tu ropa favorita"}
 		>
-      <Heading line={`${data.paintBySlug.line}`} category={`${data.paintBySlug.category}`} name={`${data.paintBySlug.name}`}/>
+      <Heading01 line={`${data.wearBySlug.gender}`} category={`${data.wearBySlug.category}`} name={`${data.wearBySlug.name}`}/>
 			
-			<ProductOverviews05 product={data.paintBySlug} />
+			<ProductOverviews05 product={data.wearBySlug} />
 
 		</Layout>
 	);
@@ -48,7 +48,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 		query: PRODUCTS
 	});
 
-	const paths = data.paints.map((data: IProduct) => ({
+	const paths = data.wears.map((data: IWear) => ({
 		params: { slug: data.slug }
 	}));
 	return {

@@ -3,7 +3,7 @@ export const LayoutHome = () => {
 		<section className="relative bg-white">
 			<img
 				className="absolute inset-0 object-[75%] sm:object-[25%] object-cover w-full h-full opacity-25 sm:opacity-100"
-				src="https://www.revistagranitodearena.com/wp-content/uploads/2020/02/Pintar-con-cal-es-color-y-alegr%C3%ADa-guatemala-horcalsa-cementos-progreso.jpg"
+				src="https://res.cloudinary.com/dvcyhn0lj/image/upload/v1654827103/piccoletti/neckties-210347_960_720_kqt0qc.jpg"
 				alt="Couple on a bed with a dog"
 			/>
 
@@ -13,7 +13,7 @@ export const LayoutHome = () => {
 				<div className="max-w-xl text-center sm:text-left">
 					<h1 className="text-3xl font-extrabold sm:text-5xl">
 						Let us find your
-						<strong className="font-extrabold text-yellow-700 sm:block">
+						<strong className="font-extrabold text-red-700 sm:block">
 							Forever Home.
 						</strong>
 					</h1>
@@ -25,15 +25,15 @@ export const LayoutHome = () => {
 
 					<div className="flex flex-wrap gap-4 mt-8 text-center">
 						<a
-							className="block w-full px-12 py-3 text-sm font-medium text-white rounded shadow bg-yellow-600 sm:w-auto active:bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring"
-							href="#"
+							className="block w-full px-12 py-3 text-sm font-medium text-white rounded shadow bg-red-600 sm:w-auto active:bg-red-600 hover:bg-red-700 focus:outline-none focus:ring"
+							href=""
 						>
 							Get Started
 						</a>
 
 						<a
-							className="block w-full px-12 py-3 text-sm font-medium bg-white rounded shadow text-yellow-600 sm:w-auto hover:text-yellow-700 active:text-yellow-600 focus:outline-none focus:ring"
-							href="#"
+							className="block w-full px-12 py-3 text-sm font-medium bg-white rounded shadow text-red-600 sm:w-auto hover:text-red-700 active:text-red-600 focus:outline-none focus:ring"
+							href=""
 						>
 							Learn More
 						</a>

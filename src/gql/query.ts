@@ -46,24 +46,23 @@ export const SITEBYCATEGORY = gql`
 		}
 	}
 `;
-
 export const PRODUCTS = gql`
-	query Paints {
-		paints {
+	query Wears {
+		wears {
 			name
 			image
 			price
 			description
 			category
-			line
+			gender
 			slug
 		}
 	}
 `;
 
 export const PRODUCT_UPDATE = gql`
-	query Paints {
-		paints {
+	query Wears {
+		Wears {
 			_id
 			name
 			brand
@@ -92,23 +91,23 @@ export const PRODUCTS_BY_GENDER = gql`
 		}
 	}
 `;
-export const PRODUCTS_BY_LINE_AND_BY_CATEGORY = gql`
-	query PaintByLineAndCategory($line: String!, $category: String!) {
-		paintByLineAndCategory(line: $line, category: $category) {
+export const PRODUCTS_BY_GENDER_AND_BY_CATEGORY = gql`
+	query WearByGenderAndCategory($gender: String!, $category: String!) {
+		wearByGenderAndCategory(gender: $gender, category: $category) {
 			name
 			image
 			price
 			description
 			category
-			line
+			gender
 			slug
 		}
 	}
 `;
 
 export const PRODUCT_BY_SLUG = gql`
-	query PaintBySlug($slug: String!) {
-		paintBySlug(slug: $slug) {
+	query WearBySlug($slug: String!) {
+		wearBySlug(slug: $slug) {
 			_id
 			name
 			brand
@@ -117,7 +116,7 @@ export const PRODUCT_BY_SLUG = gql`
 			inStock
 			slug
 			category
-			line
+			gender
 			price
 			oldPrice
 			tags
@@ -125,8 +124,8 @@ export const PRODUCT_BY_SLUG = gql`
 	}
 `;
 export const PRODUCT_ALL = gql`
-	query PaintsAll($limit: Float!, $offset:Float!) {
-		paintsAll(listPaintsInput:  { limit: $limit, offset: $offset}) {
+	query WearsAll($limit: Float!, $offset:Float!) {
+		WearsAll(listWearsInput:  { limit: $limit, offset: $offset}) {
 			_id
 			name
 			brand
@@ -143,8 +142,8 @@ export const PRODUCT_ALL = gql`
 }
 `
 export const PRODUCT_BY_PAGINATION = gql`
-	query ListPaintsWithCursor($after: String) {
-		listPaintsWithCursor(args: { first: 10, after: $after }) {
+	query ListWearsWithCursor($after: String) {
+		listWearsWithCursor(args: { first: 10, after: $after }) {
 			page {
 				edges {
 					node {

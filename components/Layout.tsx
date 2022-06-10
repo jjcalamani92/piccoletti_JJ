@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { FC } from "react";
-import { Header, Footer01 } from ".";
+import { HeaderWear, Footer01 } from ".";
 
 interface Props {
 	title: string;
@@ -27,7 +27,7 @@ export const Layout: FC<Props> = ({
 				<meta property="og:type" content="og:product" />
 				{imageFullUrl && <meta property="og:image" content={imageFullUrl} />}
 			</Head>
-			<Header />
+      <HeaderWear />
 			<main>{children}</main>
 			{/* <Footer /> */}
 			<Footer01 />
