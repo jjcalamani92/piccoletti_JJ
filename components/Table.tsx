@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faCircleMinus, faEye } from '@fortawesome/free-solid-svg-icons';
 import { useMutation } from '@apollo/client';
 import { DELETE_PRODUCT } from "../src/gql/mutation";
+import axios from "axios";
 
 interface Props {
   products: IProduct[];
@@ -15,19 +16,15 @@ interface Props {
 
 export const Table02: FC<Props> = ({ products }) => {
   const router = useRouter()
-  const [deleteData] = useMutation(DELETE_PRODUCT, {
-    onCompleted: (data) => {
-      window.location.reload();
-    },
-    update(cache, result) { },
 
-  })
   const [show, setShow] = useState(null);
 
-  const onDeleteData = (_id: string) => {
-    deleteData({ variables: { _id } })
+  const onDeleteData = async (_id: string) => {
+    // deleteData({ variables: { _id } })
+    await axios.delete(`${process.env.APIP_URL}/api/wear/${_id}`)
+    
     // console.log(`delete product with id is: ${_id}`)
-    router.replace('/')
+    router.replace('/admin')
     // const updatedTags = getValues('tags').filter(t => t !== tag);
     // setValue('tags', updatedTags, { shouldValidate: true })
   }
