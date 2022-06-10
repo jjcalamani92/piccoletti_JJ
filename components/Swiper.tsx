@@ -5,6 +5,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Autoplay, Navigation, Pagination, Thumbs } from "swiper";
 import Image from "next/image";
+import { LayoutHome } from "./LayoutHome";
 
 // interface Props {
 // 	products: IProduct[];
@@ -74,14 +75,15 @@ export const SwiperDetail: FC<Props2> = ({ image }) => {
 				grabCursor={image.length === 1 ? false : true}
 				thumbs={{ swiper: activeThumb }}
 				modules={[Autoplay, Navigation, Pagination, Thumbs]}
-				className="w-full"
+				className="mb-2"
 			>
 				{image.map((images, i) => (
-					<SwiperSlide className="w-auto" key={i}>
+					<SwiperSlide className="w-screen" key={i}>
 						<Image
 							src={`${images}`}
 							width={500}
 							height={500}
+							layout="responsive"
 							objectFit="cover"
 							alt=""
 						/>
@@ -116,5 +118,40 @@ export const SwiperDetail: FC<Props2> = ({ image }) => {
 				</Swiper>
 			)}
 		</div>
+	);
+};
+
+export const SwiperHome: FC<Props> = ({ image }) => {
+	return (
+		<>
+			<Swiper
+				slidesPerView={1}
+				spaceBetween={30}
+				loop={image.length === 1 ? false : true}
+				pagination={{
+					clickable: true
+				}}
+				navigation={false}
+				autoplay={{
+					delay: 5000,
+					disableOnInteraction: false
+				}}
+				modules={[Autoplay, Pagination, Navigation]}
+				
+			>
+				{image.map((images, i) => (
+					<SwiperSlide key={i}>
+						<LayoutHome />
+						{/* <Image
+							src={`${images}`}
+							width={500}
+							height={600}
+							objectFit="cover"
+							alt=""
+						/> */}
+					</SwiperSlide>
+				))}
+			</Swiper>
+		</>
 	);
 };
