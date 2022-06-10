@@ -125,7 +125,7 @@ export const PRODUCT_BY_SLUG = gql`
 `;
 export const PRODUCT_ALL = gql`
 	query WearsAll($limit: Float!, $offset:Float!) {
-		WearsAll(listWearsInput:  { limit: $limit, offset: $offset}) {
+		wearsAll(listWearsInput:  { limit: $limit, offset: $offset}) {
 			_id
 			name
 			brand
@@ -133,7 +133,7 @@ export const PRODUCT_ALL = gql`
 			image
 			inStock
 			slug
-			line
+			gender
 			category
 			price
 			tags

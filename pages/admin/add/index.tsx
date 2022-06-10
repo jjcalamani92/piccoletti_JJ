@@ -1,10 +1,6 @@
-import { NextPage } from "next";
-import { Layout } from "../../../components";
-import { FormAdd } from "../../../components/form/FormAdd";
+import { FormAdd, Layout } from "../../../components";
 
-
-
-const AddProduct = () => {
+const AddProduct= () => {
 	return (
 		<Layout
 			title="Nuevo Producto"

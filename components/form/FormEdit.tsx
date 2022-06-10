@@ -6,14 +6,8 @@ import { useRouter } from "next/router";
 import { ChangeEvent, FC, useState } from 'react';
 import { useForm } from "react-hook-form";
 
-const validCategory = [
-	"poliuretano",
-	"primer",
-	"masilla",
-	"complementos",
-	"kit"
-];
-const validLine = ["linea-automotiva"];
+const validCategory = ['camisas', 'pantalones', 'chompas', 'sombreros', 'poleras', 'leggins', 'chamarras', 'cortos', '']
+const validGender = ['hombre', 'mujer', 'niño', 'unisex']
 const validSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL']
 
 interface FormData {
@@ -23,11 +17,11 @@ interface FormData {
   image: string[];
   description: string;
   inStock: number;
-  // sizes: string[];
+  sizes: string[];
   category: string;
-  line: string;
+  gender: string;
   price: number;
-  // color: string;
+  color: string;
   tags: string[];
 }
 interface Props {
@@ -59,9 +53,10 @@ export const FormEdit: FC<Props> = ({ product }) => {
   }
 
   const onSubmit = async (form: FormData) => {
-    await axios.put(`${process.env.APIP_URL}/api/paint/${product._id}`, form)
+    await axios.put(`${process.env.APIP_URL}/api/wear/${product._id}`, form)
     router.replace('/admin')
   }
+
   const onFileSelected = async ({ target }: ChangeEvent<HTMLInputElement>) => {
     if (!target.files || target.files.length === 0) {
       return;
@@ -86,7 +81,7 @@ export const FormEdit: FC<Props> = ({ product }) => {
         <div className="md:grid md:grid-cols-3 md:gap-6">
           <div className="md:col-span-1">
             <div className="px-4 sm:px-0">
-              <h3 className="text-lg font-medium leading-6 text-gray-900">Editar Producto</h3>
+              <h3 className="text-lg font-medium leading-6 text-gray-900">Nuevo Producto</h3>
               <p className="mt-1 text-sm text-gray-600">
                 Esta información se mostrará publicamente, en la página de productos.
               </p>
@@ -134,24 +129,24 @@ export const FormEdit: FC<Props> = ({ product }) => {
 
 
                     <div className="col-span-6 sm:col-span-3">
-                      <label htmlFor="line" className="block text-sm font-medium text-gray-700">
-                        Linea
+                      <label htmlFor="gender" className="block text-sm font-medium text-gray-700">
+                        Categoría
                       </label>
                       <select
                         className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm capitalize"
-                        {...register('line', {
+                        {...register('gender', {
                           required: 'Este campo es requerido',
                         })}
                       >
-                        <option value="">--Linea--</option>
+                        <option value="">--Genero--</option>
                         {
-                          validLine.map((data, i) => (
+                          validGender.map((data, i) => (
                             <option className="capitalize" key={i}>{data}</option>
                           ))
                         }
                       </select>
                       <div>
-                        {errors.line && <span className="text-sm text-red-500">{errors.line.message}</span>}
+                        {errors.category && <span className="text-sm text-red-500">{errors.category.message}</span>}
                       </div>
                     </div>
 
@@ -237,9 +232,9 @@ export const FormEdit: FC<Props> = ({ product }) => {
                             className="relative cursor-pointer bg-white rounded-md font-medium text-red-600 hover:text-red-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-red-500"
                           >
                             <span>Cargar un archivo</span>
-                            <input id="file-upload" multiple 	accept="image/png, image/gif, image/jpeg" name="file-upload" type="file" className="sr-only" onChange={onFileSelected} />
+                            <input id="file-upload" name="file-upload" type="file" className="sr-only" onChange={onFileSelected} />
                           </label>
-                          {/* <p className="pl-1">o arrastrar y soltar</p> */}
+                          <p className="pl-1">o arrastrar y soltar</p>
                         </div>
                         <p className="text-xs text-gray-500">PNG, JPG, GIF hasta 5MB</p>
                       </div>
@@ -285,7 +280,7 @@ export const FormEdit: FC<Props> = ({ product }) => {
                     </div>
 
                   </div>
-{/* 
+
                   <div className="grid grid-cols-6 gap-6">
 
                     <div className="col-span-6 sm:col-span-3">
@@ -358,7 +353,7 @@ export const FormEdit: FC<Props> = ({ product }) => {
                         Presiona [Spacio] para agregar.
                       </p>
                     </div>
-                  </div> */}
+                  </div>
                   <div className="grid grid-cols-2 gap-2 mt-2"  >
                     {
                       getValues('tags').map((data, i) => (

@@ -19,7 +19,7 @@ class Heading extends React.Component<Heading01Props> {
       >
         <li>
           <div className="flex items-center">
-            <Link href={`/${line}`} passHref prefetch={false}>
+            <Link href={`/ropa/${line}`} passHref prefetch={false}>
               <a href="#" className="mr-2 text-sm font-medium text-gray-900 capitalize">
                 {line}
               </a>
@@ -45,7 +45,7 @@ class Heading extends React.Component<Heading01Props> {
               <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
             </svg>
             <Link
-              href={`/${line}/${category}`}
+              href={`/ropa/${line}/${category}`}
               passHref
               prefetch={false}
             >
